@@ -16,8 +16,7 @@ const Head = Styled.header`
    background: #2F3676;
    width: 560px;
    height: 181px;
-   border: 1px solid #979797;
-   border-radius: 8px;
+   border-radius: 8px 8px 0 0 ;
 
    h1{
       width: 219px;

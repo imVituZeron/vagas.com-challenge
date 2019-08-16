@@ -20,8 +20,8 @@ const Page = Styled.div`
    width: 560px;
    height: 794px;
    background: #F2F2F2;
-   border: 1px solid #979797;
    border-radius: 8px;
+   box-shadow: 10px 22px 24px
 `;
 
 export default Formulario;
