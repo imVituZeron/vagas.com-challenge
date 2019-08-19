@@ -2,31 +2,50 @@ import React, { Component } from 'react';
 import Styled from 'styled-components';
 
 class Form extends Component {
+
+   state = {
+      number: 1
+   }
+
+   hanbleClickPositiveNum = () => {
+      this.setState({
+         number: this.state.number + 1
+      });
+      console.log(this.state.number);
+   }
+
+   hanbleClickNegativeNum = () => {
+      this.setState({
+         number: this.state.number - 1
+      });
+      console.log(this.state.number);
+   }
+
    render() {
       return (
          <FormPage>
-            <form>
+            <form> 
                <div className="stickers  check-stickers">
                   <h2>Quais stickers</h2>
                   <input type='checkbox' id='react' value='React'/>
-                     <labe for='react'/> Vue
+                     <label for='react'/> Vue
                   <input type='checkbox' id='vue' value='Vue'/>
-                     <labe for='vue'/> Vue
+                     <label for='vue'/> Vue
                   <input type='checkbox' id='angular' value='Angular'/>
-                     <labe for='angular'/> Angular
+                     <label for='angular'/> Angular
                </div>
                <div className="stickers  amount-stickers">
                   <h2>Quantos stickers de cada? </h2>
-                  <button type='button'>-</button>
-                  <input type="text" value='0'/>
-                  <button type='button'>+</button>
+                  <button type='button' onClick={this.hanbleClickNegativeNum}>-</button>
+                  <input type="text" value={this.state.number}/> 
+                  <button type='button' onClick={this.hanbleClickPositiveNum}>+</button>
                </div>
                <div className="stickers  note-stickers">
                   <h2>Observação</h2>
-                  <input type='text'/>
+                  <textarea type='text'></textarea>
                </div>
                <div className="send  button-stickers">
-                  <button type='submit'>ENVIAR</button>
+                  <button type='submit' onChange={this.handleClick}>ENVIAR</button>
                </div>
             </form>
          </FormPage>
@@ -54,6 +73,7 @@ const FormPage = Styled.div`
       height: 90px;
 
       input{
+         color: #000;
          width: 60px;
          height: 42px;
          background: #DDE3E9;
@@ -68,9 +88,12 @@ const FormPage = Styled.div`
          border-radius: 7px;
          font-size: 18px;
       }
+      button:hover{
+         background: #191847;
+      }
    }
 
-   div.note-stickers input{
+   div.note-stickers textarea{
       width: 496px;
       height: 141px;
       background: #DDE3E9;
