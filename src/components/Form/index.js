@@ -4,21 +4,26 @@ import Styled from 'styled-components';
 class Form extends Component {
 
    state = {
-      number: 1
+      number: 1,
+      desc: '',
    }
 
    hanbleClickPositiveNum = () => {
       this.setState({
          number: this.state.number + 1
       });
-      console.log(this.state.number);
    }
 
    hanbleClickNegativeNum = () => {
       this.setState({
          number: this.state.number - 1
       });
-      console.log(this.state.number);
+   }
+
+   handleChangeDesc = event => {
+      this.setState({
+         desc: event.target.value
+      });
    }
 
    render() {
@@ -42,7 +47,7 @@ class Form extends Component {
                </div>
                <div className="stickers  note-stickers">
                   <h2>Observação</h2>
-                  <textarea type='text'></textarea>
+                  <textarea type='text' onChange={this.handleChangeDesc}></textarea>
                </div>
                <div className="send  button-stickers">
                   <button type='submit' onChange={this.handleClick}>ENVIAR</button>
