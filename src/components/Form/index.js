@@ -26,31 +26,51 @@ class Form extends Component {
       });
    }
 
+   handleClickSend = () => {
+      alert('Formulario enviado com sucesso!');
+
+      this.setState({
+         number: 1,
+         desc: ''
+      })
+
+      console.log(`
+         O numero de stickers: ${this.state.number}
+         A descrição: ${this.state.desc}
+      `)
+   }
+
    render() {
       return (
          <FormPage>
             <form> 
                <div className="stickers  check-stickers">
                   <h2>Quais stickers?</h2>
-                  <input type='checkbox' id='react' value='React'/>
-                     <label for='react'/> Vue
-                  <input type='checkbox' id='vue' value='Vue'/>
-                     <label for='vue'/> Vue
-                  <input type='checkbox' id='angular' value='Angular'/>
-                     <label for='angular'/> Angular
+                  <div className='check-escolhas'>
+                     <input className='escolhas' type='checkbox' id='react'/>  
+                        <label for='react'>React</label>
+                     <input  className='escolhas' type='checkbox' id='vue' />
+                        <label for='vue'>Vue</label>
+                     <input className='escolhas' type='checkbox' id='angular'/>
+                        <label for='angular'>Angular</label>
+                  </div> 
                </div>
                <div className="stickers  amount-stickers">
                   <h2>Quantos stickers de cada? </h2>
-                  <button type='button' onClick={this.hanbleClickNegativeNum}>-</button>
-                  <input type="text" value={this.state.number}/> 
-                  <button type='button' onClick={this.hanbleClickPositiveNum}>+</button>
+                  <div className='contador'>
+                     <button type='button' onClick={this.hanbleClickNegativeNum}>-</button>
+                     <input type="text" value={this.state.number}/> 
+                     <button type='button' onClick={this.hanbleClickPositiveNum}>+</button>
+                  </div>
                </div>
                <div className="stickers  note-stickers">
                   <h2>Observação:</h2>
-                  <textarea type='text' onChange={this.handleChangeDesc}></textarea>
+                  <textarea type='text' value={this.state.desc} onChange={this.handleChangeDesc}></textarea>
                </div>
                <div className="send  button-stickers">
-                  <button type='submit' onChange={this.handleClick}>ENVIAR</button>
+                  <button type='button' onClick={this.handleClickSend} 
+                     onChange={this.handleClick}>ENVIAR
+                  </button>
                </div>
             </form>
          </FormPage>
@@ -68,16 +88,46 @@ const FormPage = Styled.div`
       padding: 10px;
    }
 
-   div.check-stickers input{
-      background: #2F3676;
-      width: 24px;
-      height: 24px;
+   div.check-stickers {
+
+      div.check-escolhas{
+         padding: 10px;
+      }
+
+      input.escolhas{
+         display: none;
+      }
+
+      input.escolhas+label{
+         padding: 7px;
+         font-size: 24px;
+         line-height: 24px;
+         cursor: pointer;
+      }
+
+      input.escolhas+label:before{
+         content: '';
+         display: inline-block;
+         border-radius: 4px;
+         background: #b2bec3;
+         border: 2px solid #2F3676;
+         width: 24px;
+         height: 24px;
+
+         input.escolhas+label:before:hover{
+            background: #636e72;
+         }
+      }
+      input.escolhas:checked + label:before{
+         background: #2F3676;
+      }
    }
    
    div.amount-stickers {
       height: 90px;
 
       input{
+         font-size: 15pt;
          color: #000;
          width: 60px;
          height: 42px;
@@ -96,10 +146,15 @@ const FormPage = Styled.div`
       button:hover{
          background: #191847;
       }
+      div.contador {
+         padding: 10px;
+      }
    }
 
    div.note-stickers textarea{
-      width: 496px;
+      font-size: 13pt;
+      padding: 8px;
+      width: 482px;
       height: 141px;
       background: #DDE3E9;
       border: 1px solid #2F3676;
