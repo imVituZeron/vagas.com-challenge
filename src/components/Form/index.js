@@ -31,7 +31,7 @@ class Form extends Component {
          <FormPage>
             <form> 
                <div className="stickers  check-stickers">
-                  <h2>Quais stickers</h2>
+                  <h2>Quais stickers?</h2>
                   <input type='checkbox' id='react' value='React'/>
                      <label for='react'/> Vue
                   <input type='checkbox' id='vue' value='Vue'/>
@@ -46,7 +46,7 @@ class Form extends Component {
                   <button type='button' onClick={this.hanbleClickPositiveNum}>+</button>
                </div>
                <div className="stickers  note-stickers">
-                  <h2>Observação</h2>
+                  <h2>Observação:</h2>
                   <textarea type='text' onChange={this.handleChangeDesc}></textarea>
                </div>
                <div className="send  button-stickers">
