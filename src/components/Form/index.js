@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import Styled from 'styled-components';
 
-class Form extends Component {
 
+
+
+class Form extends Component {
    state = {
       number: 1,
       desc: '',
       escolhaR: false,
       escolhaV: false,
       escolhaA: false,
-      escolha: ''
+      escolha: [],
    }
 
    hanbleClickPositiveNum = () => {
@@ -48,24 +50,24 @@ class Form extends Component {
       `)
    }
 
-   handleCheckR = event => {      
+   handleCheckR = event => {   
       this.setState({
-            escolhaR: event.target.checked,
-            escolha: event.target.value
+         escolhaR: event.target.checked,
+         escolha: [].concat(this.state.escolha, event.target.value)
       });
    }
 
    handleCheckV = event => {
       this.setState({
          escolhaV: event.target.checked,
-         escolha: event.target.value
+         escolha: [].concat(this.state.escolha, event.target.value)
       });
    }
 
    handleCheckA = event => {
       this.setState({
          escolhaA: event.target.checked,
-         escolha: event.target.value
+         escolha: [].concat(this.state.escolha, event.target.value)
       });
    }
    
