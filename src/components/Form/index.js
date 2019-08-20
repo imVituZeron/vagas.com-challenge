@@ -6,6 +6,10 @@ class Form extends Component {
    state = {
       number: 1,
       desc: '',
+      escolhaR: false,
+      escolhaV: false,
+      escolhaA: false,
+      escolha: ''
    }
 
    hanbleClickPositiveNum = () => {
@@ -31,14 +35,40 @@ class Form extends Component {
 
       this.setState({
          number: 1,
-         desc: ''
+         desc: '',
+         escolhaR: false,
+         escolhaV: false,
+         escolhaA: false,
       })
 
       console.log(`
          O numero de stickers: ${this.state.number}
          A descrição: ${this.state.desc}
+         A escolha: ${this.state.escolha}
       `)
    }
+
+   handleCheckR = event => {      
+      this.setState({
+            escolhaR: event.target.checked,
+            escolha: event.target.value
+      });
+   }
+
+   handleCheckV = event => {
+      this.setState({
+         escolhaV: event.target.checked,
+         escolha: event.target.value
+      });
+   }
+
+   handleCheckA = event => {
+      this.setState({
+         escolhaA: event.target.checked,
+         escolha: event.target.value
+      });
+   }
+   
 
    render() {
       return (
@@ -47,11 +77,23 @@ class Form extends Component {
                <div className="stickers  check-stickers">
                   <h2>Quais stickers?</h2>
                   <div className='check-escolhas'>
-                     <input className='escolhas' type='checkbox' id='react'/>  
+                     <input 
+                        className='escolhas' type='checkbox'
+                        value='React'id='react' checked={this.state.escolhaR}
+                        onChange={this.handleCheckR}
+                     />  
                         <label for='react'>React</label>
-                     <input  className='escolhas' type='checkbox' id='vue' />
+                     <input 
+                        className='escolhas' type='checkbox'
+                        value='Vue' id='vue' checked={this.state.escolhaV}
+                        onChange={this.handleCheckV}
+                     />
                         <label for='vue'>Vue</label>
-                     <input className='escolhas' type='checkbox' id='angular'/>
+                     <input 
+                        className='escolhas' type='checkbox'
+                        value='Angular' id='angular' checked={this.state.escolhaA}
+                        onChange={this.handleCheckA}
+                     />
                         <label for='angular'>Angular</label>
                   </div> 
                </div>

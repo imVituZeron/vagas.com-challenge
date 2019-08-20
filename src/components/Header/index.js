@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Styled from 'styled-components';
 
-
 class Header extends Component {
    render() {
       return (
