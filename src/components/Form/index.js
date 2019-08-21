@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Styled from 'styled-components';
-import { isFlowBaseAnnotation } from '@babel/types';
 
 class Form extends Component {
    state = {
@@ -19,9 +18,11 @@ class Form extends Component {
    }
 
    hanbleClickNegativeNum = () => {
-      this.setState({
-         number: this.state.number - 1
-      });
+      if (this.state.number > 0){
+         this.setState({
+            number: this.state.number - 1
+         });
+      }
    }
 
    handleChangeDesc = event => {
@@ -39,6 +40,7 @@ class Form extends Component {
          escolhaR: false,
          escolhaV: false,
          escolhaA: false,
+         escolha: []
       })
 
       console.log(`
@@ -66,7 +68,7 @@ class Form extends Component {
          });
       }
    }
-   
+
    render() {
       return (
          <FormPage>
@@ -97,9 +99,9 @@ class Form extends Component {
                <div className="stickers  amount-stickers">
                   <h2>Quantos stickers de cada? </h2>
                   <div className='contador'>
-                     <button type='button' onClick={this.hanbleClickNegativeNum}>-</button>
+                     <button type='button' value='menos' onClick={this.hanbleClickNegativeNum}>-</button>
                      <input type="text" value={this.state.number}/> 
-                     <button type='button' onClick={this.hanbleClickPositiveNum}>+</button>
+                     <button type='button' value='mais' onClick={this.hanbleClickPositiveNum}>+</button>
                   </div>
                </div>
                <div className="stickers  note-stickers">
