@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Styled from 'styled-components';
+import { isFlowBaseAnnotation } from '@babel/types';
 
 class Form extends Component {
    state = {
@@ -47,36 +48,25 @@ class Form extends Component {
       `)
    }
 
-   handleCheckR = event => {   
-
-      this.setState({
-         escolhaR: event.target.checked,
-         escolha: [].concat(this.state.escolha, event.target.value)
-      });
-
-      if (this.state.escolhaR === false){
+   handleChangeAll = event => {
+      if (event.target.value === 'React'){
          this.setState({
-            escolha: [].pop(event.target.value)
-         })
+            escolhaR: event.target.checked,
+            escolha: [].concat(this.state.escolha, event.target.value)
+         });
+      } else if (event.target.value === 'Vue') {
+         this.setState({
+            escolhaV: event.target.checked,
+            escolha: [].concat(this.state.escolha, event.target.value)
+         });
+      } else {
+         this.setState({
+            escolhaA: event.target.checked,
+            escolha: [].concat(this.state.escolha, event.target.value)
+         });
       }
-      
-   }
-
-   handleCheckV = event => {
-      this.setState({
-         escolhaV: event.target.checked,
-         escolha: [].concat(this.state.escolha, event.target.value)
-      });
-   }
-
-   handleCheckA = event => {
-      this.setState({
-         escolhaA: event.target.checked,
-         escolha: [].concat(this.state.escolha, event.target.value)
-      });
    }
    
-
    render() {
       return (
          <FormPage>
@@ -87,19 +77,19 @@ class Form extends Component {
                      <input 
                         className='escolhas' type='checkbox'
                         value='React'id='react' checked={this.state.escolhaR}
-                        onChange={this.handleCheckR}
+                        onChange={this.handleChangeAll}
                      />  
                         <label for='react'>React</label>
                      <input 
                         className='escolhas' type='checkbox'
                         value='Vue' id='vue' checked={this.state.escolhaV}
-                        onChange={this.handleCheckV}
+                        onChange={this.handleChangeAll}
                      />
                         <label for='vue'>Vue</label>
                      <input 
                         className='escolhas' type='checkbox'
                         value='Angular' id='angular' checked={this.state.escolhaA}
-                        onChange={this.handleCheckA}
+                        onChange={this.handleChangeAll}
                      />
                         <label for='angular'>Angular</label>
                   </div> 
