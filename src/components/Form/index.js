@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import Styled from 'styled-components';
 
 class Form extends Component {
+
    state = {
-      number: 1,
+      number: 0,
       desc: '',
       escolhaR: false,
       escolhaV: false,
@@ -127,6 +128,10 @@ const FormPage = Styled.div`
       margin-left: 32px;
       height: 181px;
       padding: 10px;
+   }
+
+   div.contador input.contador-em-zero{
+      background: #C5CFD6;
    }
 
    div.check-stickers {

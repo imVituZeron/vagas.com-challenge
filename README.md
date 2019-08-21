@@ -1,3 +1,11 @@
+Os dados do formulário vão ser mostrados no `console` do navegador
+
+## Console
+
+Para acessar o `console`, aperte *F12* quando o projeto for carregado na sua tela,
+assim verá os dados que você enviou no formulário
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
